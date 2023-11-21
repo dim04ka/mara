@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "mara-b5982": {
+      "hosting": {
+        "mara": [
+          "mara-b5982"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "mara-b5982"
+  }
+}

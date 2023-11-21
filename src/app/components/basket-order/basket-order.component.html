@@ -1,0 +1,55 @@
+<app-loader *ngIf='isLoading; else table'></app-loader>
+<ng-template #table>
+  <div class='table-responsive'>
+
+
+    <table
+      [dataSource]='dataSource'
+      mat-table
+      matSort
+      matSortDisableClear
+    >
+      <ng-container *ngFor='let column of tableColumns;' matColumnDef='{{column.columnDef}}'>
+        <th mat-header-cell *matHeaderCellDef class='table__cell-title'>
+          {{column.header}}
+        </th>
+        <td mat-cell *matCellDef='let element' class='table__cell'>
+          <!--        <div [ngSwitch]="element.columnDef">-->
+          <!--          <ng-template [ngSwitchCase]="Column.Title">-->
+          <!--            <p>One</p>-->
+          <!--          </ng-template>-->
+
+          <!--        </div>-->
+
+          <div *ngIf='column.columnDef === Column.Count; else other'>
+            <input style='width: 50px' type='number' min='1' value='{{column.cell(element)}}'
+                   (change)='handleChange($event, element.id)'>
+          </div>
+          <ng-template #other>
+            <div *ngIf='column.columnDef !== Column.Images && column.columnDef !== Column.Price'><a
+              [routerLink]='this.reduceLink(element)'>{{column.cell(element)}}</a></div>
+            <img [src]='column.cell(element)' *ngIf='column.columnDef === Column.Images'
+                 style='width: 50px; height: 50px; padding: 10px' />
+            <div *ngIf='column.columnDef ===  Column.Price'>{{column.cell(element)}}</div>
+          </ng-template>
+
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef='customColumn'>
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef='let person'>
+          <!--      <button mat-button (click)='handleEdit(person)'>Edit</button>-->
+          <!--        <button mat-button >delete</button>-->
+          <mat-icon (click)='remove(person.id)'>remove_circle</mat-icon>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef='displayedColumns'></tr>
+      <tr mat-row *matRowDef='let row; columns: displayedColumns;'></tr>
+    </table>
+  </div>
+</ng-template>
+<hr />
+<p>Сумма: {{amount | currency: "GEL":"symbol-narrow"}}</p>
+

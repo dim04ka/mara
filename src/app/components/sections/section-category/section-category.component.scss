@@ -1,0 +1,65 @@
+section{
+  padding: 50px 0;
+}
+
+.category{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 39px;
+  color: white;
+
+  @media (max-width: 1180px) {
+    grid-template-columns: 1fr;
+  }
+
+
+  & a div {
+    height: 385px;
+    position: relative;
+    transition: all 10s;
+    font-size: 30px;
+    font-weight: bold;
+    color: white;
+
+    @media screen and (max-width: 1180px) {
+      width: 100%;
+    }
+
+    &:hover {
+      font-size: 58px;
+      //transform: scale(1.1);
+    }
+  }
+
+  span {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  }
+
+  //& a:first-child{
+  //  div {
+  //    background-image: url('/assets/images/category-vox.png');
+  //  }
+  //
+  //}
+  //& a:nth-child(2) {
+  //  div {
+  //    background-image: url('/assets/images/category-wick.png');
+  //  }
+  //
+  //}
+  //& a:nth-child(3){
+  //  div {
+  //    background-image: url('/assets/images/category-candles.png');
+  //  }
+  //
+  //}
+  //& a:nth-child(4){
+  //  div{
+  //    flex: 1;
+  //    background-image: url('/assets/images/category-other.png');
+  //  }
+  //
+  //}
+}

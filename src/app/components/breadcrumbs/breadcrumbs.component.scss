@@ -1,0 +1,10 @@
+a {
+  padding: 0 10px;
+  color: rgba(0, 0, 0, 0.5);
+  text-decoration-line: none;
+  transition: all .3s;
+
+  &:hover {
+    color: rgba(0, 0, 0, 1);
+  }
+}

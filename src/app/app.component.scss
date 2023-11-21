@@ -1,0 +1,40 @@
+::ng-deep body {
+  margin: 0;
+  font-family: Inter, sans-serif;
+  font-weight: 300;
+}
+
+.sidenav-container {
+  flex: 1;
+
+  .sidenav {
+    min-width: 240px;
+
+    a {
+      display: block;
+      padding: 6px 24px;
+      width: 100%;
+      text-align: left;
+    }
+  }
+
+  main {
+    padding: 18px 24px;
+  }
+}
+
+mat-sidenav-container{
+  height: calc(100vh - 130px);
+}
+
+ul{
+  list-style-type: none;
+  padding: 0;
+  li{
+    //padding: 10px 0;
+    
+    a {
+      text-decoration: none;
+    }
+  }
+}

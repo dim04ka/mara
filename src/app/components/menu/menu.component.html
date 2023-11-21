@@ -1,0 +1,34 @@
+<section>
+  <div class="wrapper">
+    <div class="menu">
+      <div class="menu__block">
+        <div>Блог</div>
+        <div>FAQ</div>
+      </div>
+
+      <a href='' class="menu__logo">
+        <h1>MARA</h1>
+        <h2>candle shop and for candles</h2>
+      </a>
+      <div class="menu__block">
+        <div>Доставка и Оплата</div>
+        <div>Контакты</div>
+      </div>
+
+    </div>
+    <div class='button-wrapper'>
+      <button mat-button class="menu-button" (click)="isMenuOpenChange.emit()">
+        <mat-icon>{{ isMenuOpen ? 'menu_open' : 'menu' }}</mat-icon>
+      </button>
+    </div>
+    <div class="category">
+      <ul>
+        <li class='line' *ngFor="let category of categories">
+          <a [routerLink]="getLink(category.id)" [routerLinkActive]="['active']">{{category.name}}</a>
+        </li>
+      </ul>
+    </div>
+    <app-basket></app-basket>
+  </div>
+</section>
+

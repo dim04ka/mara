@@ -1,0 +1,47 @@
+form {
+  display: flex;
+  flex-direction: column;
+  max-width: 900px;
+  margin: 0 auto 100px;
+
+  button{
+    width: 100%;
+    max-width: 550px;
+    padding: 10px 20px;
+    margin: 0 auto;
+    cursor: pointer;
+    border: none;
+    font-size: 18px;
+    box-shadow: 3px 3px #888888;
+    transition: all 0.2s ease;
+
+    &:hover{
+      box-shadow: 5px 5px #888888;
+    }
+  }
+}
+
+.done-order{
+  text-align: center;
+  font-size: 26px;
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 15px;
+
+  a {
+    color: black;
+    text-decoration: none;
+    border-bottom: 1px solid black;
+    margin-top: 30px;
+    display: block;
+  }
+
+  mat-icon {
+    font-size: 60px;
+    height: 60px;
+    width: 60px;
+  }
+}

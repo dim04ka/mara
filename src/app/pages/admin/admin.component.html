@@ -1,0 +1,65 @@
+<section>
+  <div class='wrapper'>
+    <button mat-button (click)='isDisplayForm = true'>Добавить продукт</button>
+    <div *ngIf='isDisplayForm'>
+      <div>Add new product</div>
+      <form [formGroup]='profileForm'>
+
+        <mat-form-field appearance='outline'>
+          <mat-label>Title</mat-label>
+          <input matInput placeholder='Placeholder' formControlName='title'>
+        </mat-form-field>
+
+        <mat-form-field appearance='outline'>
+          <mat-label>category</mat-label>
+          <input matInput placeholder='Placeholder' formControlName='category'>
+        </mat-form-field>
+
+        <mat-form-field appearance='outline'>
+          <mat-label>Price</mat-label>
+          <input matInput placeholder='Placeholder' formControlName='price'>
+        </mat-form-field>
+
+        <mat-form-field appearance='outline'>
+          <mat-label>full_description</mat-label>
+          <input matInput placeholder='Placeholder' formControlName='full_description'>
+        </mat-form-field>
+
+        <mat-form-field appearance='outline'>
+          <mat-label>small_description</mat-label>
+          <input matInput placeholder='Placeholder' formControlName='small_description'>
+        </mat-form-field>
+
+<!--        <mat-form-field appearance="fill">-->
+<!--          <mat-label>Check me!</mat-label>-->
+<!--          <ng-container formGroupName="profileForm">-->
+<!--            <input type="checkbox" formControlName="hide">-->
+<!--          </ng-container>-->
+<!--        </mat-form-field>-->
+        <input type='checkbox' formControlName="hide">
+        <div>{{JSON.stringify(profileForm.value) }}</div>
+
+        <input type='file'
+               id='file'
+               #fileInput
+               (change)='onFileSelected($event)'
+               name='image'
+               autocomplete='off'
+        />
+        <img [src]='url_photo' style='height: 100px; width: 100px'/>
+        <button color='primary' mat-button (click)='addProduct()'>Add</button>
+        <button color='primary' mat-button (click)='saveProduct()'>Save</button>
+      </form>
+    </div>
+
+    <div *ngIf='isEdit'>
+      <div>Редактирование</div>
+
+    </div>
+    <app-table [data]='data | async' (actionEdit)='handleActionEdit($event)' (actionDelete)='handleActionDelete($event)'></app-table>
+  </div>
+
+</section>
+
+
+

@@ -1,0 +1,35 @@
+<section>
+  <div class='wrapper'>
+   <div class='done-order' *ngIf='doneOrder; else form'>
+     <div><mat-icon color='primary'>done</mat-icon></div>
+     <div>Спасибо за заявку!</div>
+     <div>Мы свяжемся с вами</div>
+     <div><a routerLink='/'>На главную</a></div>
+   </div>
+    <ng-template #form>
+      <h1>Ваш заказ:</h1>
+      <hr />
+      <app-basket-order></app-basket-order>
+      <form [formGroup]='orderForm' (ngSubmit)='submit()'>
+        <mat-form-field>
+          <mat-label>Имя</mat-label>
+          <input matInput placeholder='Имя' formControlName='name'>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Email</mat-label>
+          <input matInput placeholder='@mail' formControlName='email'>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Напишите как с Вами связаться</mat-label>
+          <input matInput placeholder='Как с Вами связаться' formControlName='text'>
+        </mat-form-field>
+        <button type='submit'>
+          Отправить заявку
+        </button>
+      </form>
+    </ng-template>
+
+  </div>
+</section>

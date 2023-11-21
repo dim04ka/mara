@@ -1,0 +1,101 @@
+section {
+  padding: 50px 0;
+  background-color: #252525;
+  color: white;
+}
+.wrapper{
+  display: flex;
+  gap: 100px;
+  justify-content: space-between;
+
+  @media (max-width: 1180px) {
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+  }
+}
+.column{
+  @media (max-width: 1180px) {
+    width: 100%;
+  }
+  h2{
+    font-size: 24px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+}
+
+ul{
+  list-style-type: none;
+  padding: 0;
+
+  li{
+    padding: 10px 0;
+  }
+}
+.logo{
+  font-family: 'Alegreya', serif;
+  border: 1px solid white;
+  padding: 20px 20px 0;
+  text-align: center;
+  max-width: 200px;
+
+
+  @media (max-width: 1180px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__phone{
+    font-size: 20px;
+    text-decoration: none;
+    color: white;
+    font-family: Inter, sans-serif;
+  }
+
+  &__social {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    padding: 20px 0;
+
+    a{
+      width: 25px;
+      height: 25px;
+      background-color: white;
+      background-position: center;
+      background-repeat: no-repeat;
+      @media (max-width: 1180px) {
+        width: 55px;
+        height: 55px;
+      }
+    }
+
+
+    .instagram {
+      background-image: url('/assets/svg/instagram.svg');
+    }
+    .telegram {
+      background-image: url('/assets/svg/telegram.svg');
+    }
+    .facebook {
+      background-image: url('/assets/svg/facebook.svg');
+    }
+  }
+  h1{
+    font-size: 48px;
+    font-weight: 500;
+    margin: 0;
+
+  }
+  h2{
+    font-size: 16px;
+    font-weight: 400;
+    text-transform: uppercase;
+    margin: 0;
+    max-width: 160px
+  }
+
+}

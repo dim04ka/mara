@@ -1,0 +1,21 @@
+<div class='card' *ngIf='product'>
+  <a [routerLink]='product.id'>
+    <div class='photo' [style.background-image]="'url(' + product.images[0] + ')'"></div>
+  </a>
+
+  <div class='card__title'>{{product.title}}</div>
+  <div class='card__small-description'>{{product.small_description}}</div>
+  <div class='card__price'>{{ product.price | currency:"GEL":"symbol-narrow"}}</div>
+  <!--  <mat-form-field>-->
+  <!--    <mat-label>Choose an option</mat-label>-->
+  <!--    <mat-select [disabled]="disableSelect.value">-->
+  <!--      <mat-option value="option1">Option 1</mat-option>-->
+  <!--      <mat-option value="option2" disabled>Option 2 (disabled)</mat-option>-->
+  <!--      <mat-option value="option3">Option 3</mat-option>-->
+  <!--    </mat-select>-->
+  <!--  </mat-form-field>-->
+  <!--  <mat-form-field>-->
+  <!--    <mat-label></mat-label>-->
+  <!--  </mat-form-field>-->
+  <button mat-raised-button color="primary" (click)='addToBasket.emit({id: product.id, count: 1 })'>Добавить в корзину</button>
+</div>

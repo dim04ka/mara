@@ -1,0 +1,29 @@
+<section>
+  <div class='wrapper'>
+<!--    <p><a [routerLink]="'/'">Главная</a> / <a [routerLink]="'/cat/'+this.category">{{this.category}}</a> / <a-->
+<!--      [routerLink]="'/cat/'+this.category+'/'+id">{{product?.title}}</a></p>-->
+    <app-breadcrumbs [category]='category' [idProduct]='id' [titleProduct]="product?.title || ''"></app-breadcrumbs>
+    <div class='container'>
+        <div class='photo' [style.background-image]="'url(' + product?.images?.[0] || '' + ')'"></div>
+        <div>
+          <div class='stars'>★★★★★ (5.0)</div>
+          <h1>{{product?.title}}</h1>
+          <div>
+            <div>{{product?.small_description}}</div>
+          </div>
+          <div class='price'>{{product?.price | currency: "GEL":"symbol-narrow"}}</div>
+          <button mat-raised-button color='primary' (click)='addToBasket({ id: product!.id , count: 1 })'>Добавить в
+            корзину
+          </button>
+          <div>
+            <strong>Описание:</strong>
+            <h5>
+              {{product?.full_description}}
+            </h5>
+          </div>
+
+        </div>
+      </div>
+    </div>
+</section>
+

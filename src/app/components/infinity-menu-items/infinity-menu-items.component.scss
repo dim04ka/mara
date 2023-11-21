@@ -1,0 +1,31 @@
+.root{
+  overflow: hidden;
+  background-color: #2F2F2D;
+}
+.moving-text {
+  font-size: 16px;
+  position: relative;
+  animation: moveText 35s linear infinite;
+  width: 3000px;
+  background-color: #2F2F2D;
+  color: white;
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 20px 0;
+  word-spacing: 10px;
+
+  @media (max-width: 1180px) {
+    font-size: 12px;
+    padding: 10px 0;
+  }
+
+}
+
+@keyframes moveText {
+  0% {
+    left: 0;
+  }
+  100% {
+    left: -100%;
+  }
+}

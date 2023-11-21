@@ -1,0 +1,11 @@
+<section>
+  <div class='wrapper'>
+    <div class='category'>
+      <div *ngFor='let category of categories'>
+        <a [routerLink]="'/category/'+category.url">
+          <div [style.background-image]="'url(' + category.img + ')'"><span>{{category.name}}</span></div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

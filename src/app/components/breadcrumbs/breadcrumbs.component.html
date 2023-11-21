@@ -1,0 +1,7 @@
+<!--<p><a [routerLink]="'/'">Главная</a> / <a [routerLink]="'/cat/'+category">{{category}}</a></p>-->
+
+  <span *ngFor='let link of breadcrumbs; index as i'>
+    <a [routerLink]="link.url">{{link.title}}</a>
+    <span *ngIf='(breadcrumbs.length-1) !== i'>/</span>
+  </span>
+

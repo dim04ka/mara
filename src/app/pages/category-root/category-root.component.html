@@ -1,0 +1,15 @@
+<section>
+  <div class='wrapper'>
+    <app-breadcrumbs [category]='category'></app-breadcrumbs>
+    <div class='loader' *ngIf="!data.length; else card">
+      <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+    </div>
+
+    <ng-template #card>
+      <div class='cards'>
+        <app-card (addToBasket)="addToBasket($event)" *ngFor='let product of data' [product]='product'></app-card>
+      </div>
+    </ng-template>
+
+  </div>
+</section>
