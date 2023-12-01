@@ -1,4 +1,9 @@
-<section>
+<div *ngIf='!isAdmin'>
+  <input type="text" #input />
+  <button (click)='check(input.value)'>enter</button>
+</div>
+
+<section *ngIf='isAdmin'>
   <div class='wrapper'>
     <button mat-button (click)='isDisplayForm = true'>Добавить продукт</button>
     <div *ngIf='isDisplayForm'>

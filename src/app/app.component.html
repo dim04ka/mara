@@ -1,18 +1,16 @@
-<app-infinity-menu-items [text]="data"></app-infinity-menu-items>
-
-
-<app-menu [isMenuOpen]='isMenuOpen' (isMenuOpenChange)='sidenav.toggle()'></app-menu>
 
 <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #sidenav autoFocus="false" mode="over" [(opened)]="isMenuOpen" class="sidenav">
+  <mat-sidenav position="end" #sidenav autoFocus="false" mode="over" [(opened)]="isMenuOpen" class="sidenav">
     <ul>
       <li class='line' *ngFor="let category of categories">
         <a  mat-button [routerLink]="'/category/'+category.url" [routerLinkActive]="['active']" (click)='sidenav.toggle()'>{{category.name}}</a>
       </li>
     </ul>
-
   </mat-sidenav>
   <mat-sidenav-content>
+
+    <app-infinity-menu-items [text]="data"></app-infinity-menu-items>
+    <app-menu [isMenuOpen]='isMenuOpen' (isMenuOpenChange)='sidenav.toggle()'></app-menu>
     <main>
       <router-outlet></router-outlet>
     </main>

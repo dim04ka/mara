@@ -24,15 +24,17 @@
 }
 
 mat-sidenav-container{
-  height: calc(100vh - 130px);
+  //height: calc(100vh - 130px);
+  height: 100vh;
 }
+
 
 ul{
   list-style-type: none;
   padding: 0;
   li{
     //padding: 10px 0;
-    
+
     a {
       text-decoration: none;
     }

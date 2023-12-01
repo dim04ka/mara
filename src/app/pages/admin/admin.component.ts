@@ -145,6 +145,7 @@ export class AdminComponent {
   }
 
   documentId = '';
+  value: any;
   getDocumentId(fieldName: string, fieldValue: string) {
     this.dataService
       .getDocumentIdByFieldValue(fieldName, fieldValue)
@@ -171,5 +172,10 @@ export class AdminComponent {
           console.log('Document not found');
         }
       });
+  }
+
+  isAdmin = false;
+  check(value: string) {
+    if (value === 'qwerty123') this.isAdmin = true;
   }
 }

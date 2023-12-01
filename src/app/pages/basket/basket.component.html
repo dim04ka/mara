@@ -3,7 +3,7 @@
    <div class='done-order' *ngIf='doneOrder; else form'>
      <div><mat-icon color='primary'>done</mat-icon></div>
      <div>Спасибо за заявку!</div>
-     <div>Мы свяжемся с вами</div>
+     <div>Когда заказ будет готов, мы напишем </div>
      <div><a routerLink='/'>На главную</a></div>
    </div>
     <ng-template #form>
@@ -23,7 +23,7 @@
 
         <mat-form-field>
           <mat-label>Напишите как с Вами связаться</mat-label>
-          <input matInput placeholder='Как с Вами связаться' formControlName='text'>
+          <input matInput placeholder='Как с Вами связаться?' formControlName='text'>
         </mat-form-field>
         <button type='submit'>
           Отправить заявку

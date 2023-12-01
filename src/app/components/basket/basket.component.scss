@@ -1,11 +1,11 @@
 .modal{
-  position: absolute;
-  top: 35px;
-  right: -50px;
+  position: fixed;
+  top: 150px;
+  right: 100px;
   z-index: 5;
 
   @media (max-width: 1180px) {
-    top: 100px;
+    top: 185px;
     right: 15px;
   }
 
