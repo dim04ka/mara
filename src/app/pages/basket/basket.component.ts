@@ -26,7 +26,6 @@ export class BasketPageComponent {
 
   constructor(
     private basketService: BasketService,
-    private afs: AngularFirestore,
     private http: HttpClient,
     private firestoreService: FirestoreService
   ) {
@@ -39,11 +38,11 @@ export class BasketPageComponent {
     //     this.checkLoading();
     //   });
 
-    // this.basketService.getBasket().subscribe((value: Item[]) => {
-    //   this.value = value;
-    //   this.currentValueIds = value.map(item => item.id);
-    //   this.checkLoading();
-    // });
+    this.basketService.getBasket().subscribe((value: Item[]) => {
+      this.value = value;
+      this.currentValueIds = value.map(item => item.id);
+      this.checkLoading();
+    });
   }
 
   orderForm = new FormGroup({
@@ -62,11 +61,11 @@ export class BasketPageComponent {
     }
   }
 
-  // private checkLoading() {
-  //   if (this.products.length > 0) {
-  //     this.isLoading = false;
-  //   }
-  // }
+  private checkLoading() {
+    if (this.products.length > 0) {
+      this.isLoading = false;
+    }
+  }
 
   // getData(): IBasketOrder[] {
   //   return this.products

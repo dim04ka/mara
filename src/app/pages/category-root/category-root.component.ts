@@ -20,7 +20,6 @@ export class CategoryRootComponent {
   data: Product[] = [];
   constructor(
     private route: ActivatedRoute,
-    public afs: AngularFirestore,
     private dataService: DataService,
     private basketService: BasketService,
     private firestoreService: FirestoreService,

@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Item } from '../interfaces/basket';
 
 @Injectable({
@@ -11,7 +10,7 @@ export class BasketService {
   isShowBucket$ = new BehaviorSubject<boolean>(true);
   public order$ = new BehaviorSubject<any>([]);
   public amount$ = new BehaviorSubject<number>(0);
-  constructor(public afs: AngularFirestore) {
+  constructor() {
     this.initialBasket();
     this.basket.subscribe(items => {
       localStorage.setItem('basket', JSON.stringify(items));

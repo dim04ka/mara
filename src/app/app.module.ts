@@ -70,7 +70,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     MatBadgeModule,
     MatSnackBarModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule,
+    // AngularFirestoreModule,
     MatTableModule,
     ReactiveFormsModule,
     MatIconModule,
