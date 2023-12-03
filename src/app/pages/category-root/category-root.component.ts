@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Product } from '../../interfaces/table';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
+// import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { DataService } from '../../services/data.service';
 import { Item } from '../../interfaces/basket';
 import { BasketService } from '../../services/basket.service';

@@ -5,7 +5,7 @@ import { DataService } from '../../services/data.service';
 import { IBasketOrder } from '../../interfaces/basket';
 import { Product } from '../../interfaces/table';
 import { Observable } from 'rxjs';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
+// import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { TelegramService } from '../../services/telegram.service';
 import { HttpClient } from '@angular/common/http';
 import { FirestoreService } from '../../services/firestore.service';

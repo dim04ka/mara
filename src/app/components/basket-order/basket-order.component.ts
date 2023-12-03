@@ -2,7 +2,7 @@ import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { BasketService } from '../../services/basket.service';
 import { IBasketOrder, Item } from '../../interfaces/basket';
 import { Column, ITableColumns, Product } from '../../interfaces/table';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
+// import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { ProductService } from '../../services/product.service';
 import { categoryGroupById } from '../../constants';
 import { CATEGORY } from '../../interfaces/category';

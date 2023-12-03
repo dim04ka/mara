@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
+// import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { DataService } from '../../services/data.service';
 import { BasketService } from '../../services/basket.service';
 import { Product } from '../../interfaces/table';

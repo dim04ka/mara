@@ -22,7 +22,7 @@ import { AdminComponent } from './pages/admin/admin.component';
 
 import { environment } from '../environments/environment';
 
-import { AngularFireModule } from '@angular/fire/compat';
+// import { AngularFireModule } from '@angular/fire/compat';
 // import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { TableComponent } from './components/table/table.component';
 import { MatTableModule } from '@angular/material/table';
@@ -62,7 +62,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     LoaderComponent,
   ],
   imports: [
-    AngularFireModule.initializeApp(environment.firebase),
+    // AngularFireModule.initializeApp(),
     // AngularFirestoreModule,
     BrowserModule,
     AppRoutingModule,
