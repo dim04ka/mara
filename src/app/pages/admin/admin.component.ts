@@ -2,7 +2,7 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 import { BehaviorSubject, finalize, Observable, of } from 'rxjs';
 import { FormControl, FormGroup } from '@angular/forms';
 import { FileUploadServiceService } from '../../services/file-upload-service.service';
-import { AngularFireStorage } from '@angular/fire/compat/storage';
+// import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { DataService } from '../../services/data.service';
 import { UUID } from 'uuid-generator-ts';
 import { Product } from '../../interfaces/table';
@@ -20,18 +20,11 @@ export class AdminComponent {
 
   constructor(
     private fileUploadService: FileUploadServiceService,
-    private storage: AngularFireStorage,
+    // private storage: AngularFireStorage,
     private dataService: DataService,
     private firestoreService: FirestoreService,
     private productService: ProductService,
   ) {
-    // this.afs
-    //   .collection('products')
-    //   .valueChanges()
-    //   .subscribe(data => {
-    //     this.data.next(data as Product[]);
-    //     console.log('Data:', data);
-    //   });
     this.firestoreService.loadValues();
     this.productService.products$.subscribe(data => {
       this.data.next(data);
@@ -82,30 +75,30 @@ export class AdminComponent {
   isEdit = false;
 
   onFileSelected(event: any) {
-    var n = Date.now();
-    const file = event.target.files[0];
-    const filePath = `products/${n}`;
-    const fileRef = this.storage.ref(filePath);
-    const task = this.storage.upload(`products/${n}`, file);
-    task
-      .snapshotChanges()
-      .pipe(
-        finalize(() => {
-          this.downloadURL = fileRef.getDownloadURL();
-          this.downloadURL.subscribe(url => {
-            if (url) {
-              console.log('URL===', url);
-              this.url_photo = url;
-            }
-            // console.log(this.fb);
-          });
-        }),
-      )
-      .subscribe(url => {
-        if (url) {
-          console.log('url end', url);
-        }
-      });
+    // var n = Date.now();
+    // const file = event.target.files[0];
+    // const filePath = `products/${n}`;
+    // const fileRef = this.storage.ref(filePath);
+    // const task = this.storage.upload(`products/${n}`, file);
+    // task
+    //   .snapshotChanges()
+    //   .pipe(
+    //     finalize(() => {
+    //       this.downloadURL = fileRef.getDownloadURL();
+    //       this.downloadURL.subscribe(url => {
+    //         if (url) {
+    //           console.log('URL===', url);
+    //           this.url_photo = url;
+    //         }
+    //         // console.log(this.fb);
+    //       });
+    //     }),
+    //   )
+    //   .subscribe(url => {
+    //     if (url) {
+    //       console.log('url end', url);
+    //     }
+    //   });
   }
 
   handleActionEdit({

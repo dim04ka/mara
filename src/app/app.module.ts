@@ -23,7 +23,7 @@ import { AdminComponent } from './pages/admin/admin.component';
 import { environment } from '../environments/environment';
 
 import { AngularFireModule } from '@angular/fire/compat';
-import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+// import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { TableComponent } from './components/table/table.component';
 import { MatTableModule } from '@angular/material/table';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -62,6 +62,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     LoaderComponent,
   ],
   imports: [
+    AngularFireModule.initializeApp(environment.firebase),
+    // AngularFirestoreModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -69,8 +71,6 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     MatButtonModule,
     MatBadgeModule,
     MatSnackBarModule,
-    AngularFireModule.initializeApp(environment.firebase),
-    // AngularFirestoreModule,
     MatTableModule,
     ReactiveFormsModule,
     MatIconModule,
