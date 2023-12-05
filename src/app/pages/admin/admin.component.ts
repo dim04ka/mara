@@ -8,6 +8,7 @@ import { UUID } from 'uuid-generator-ts';
 import { Product } from '../../interfaces/table';
 import { FirestoreService } from '../../services/firestore.service';
 import { ProductService } from '../../services/product.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-admin',
@@ -24,6 +25,8 @@ export class AdminComponent {
     private dataService: DataService,
     private firestoreService: FirestoreService,
     private productService: ProductService,
+    private http: HttpClient,
+    private elementRef: ElementRef
   ) {
     this.firestoreService.loadValues();
     this.productService.products$.subscribe(data => {
@@ -74,30 +77,63 @@ export class AdminComponent {
   url_photo = '';
   isEdit = false;
 
-  onFileSelected(event: any) {
-    // var n = Date.now();
-    // const file = event.target.files[0];
-    // const filePath = `products/${n}`;
-    // const fileRef = this.storage.ref(filePath);
-    // const task = this.storage.upload(`products/${n}`, file);
-    // task
-    //   .snapshotChanges()
-    //   .pipe(
-    //     finalize(() => {
-    //       this.downloadURL = fileRef.getDownloadURL();
-    //       this.downloadURL.subscribe(url => {
-    //         if (url) {
-    //           console.log('URL===', url);
-    //           this.url_photo = url;
-    //         }
-    //         // console.log(this.fb);
-    //       });
-    //     }),
-    //   )
-    //   .subscribe(url => {
-    //     if (url) {
-    //       console.log('url end', url);
-    //     }
+  // onFileSelected(event: any) {
+  //
+  //   console.log('event', event.target.files)
+  //
+  //   this.fileUploadService.uploadFile(event.target.files).subscribe(url => {
+  //     console.log('url done', url);
+  //   })
+  //
+  //   // var n = Date.now();
+  //   // const file = event.target.files[0];
+  //   // const filePath = `products/${n}`;
+  //   // const fileRef = this.storage.ref(filePath);
+  //   // const task = this.storage.upload(`products/${n}`, file);
+  //   // task
+  //   //   .snapshotChanges()
+  //   //   .pipe(
+  //   //     finalize(() => {
+  //   //       this.downloadURL = fileRef.getDownloadURL();
+  //   //       this.downloadURL.subscribe(url => {
+  //   //         if (url) {
+  //   //           console.log('URL===', url);
+  //   //           this.url_photo = url;
+  //   //         }
+  //   //         // console.log(this.fb);
+  //   //       });
+  //   //     }),
+  //   //   )
+  //   //   .subscribe(url => {
+  //   //     if (url) {
+  //   //       console.log('url end', url);
+  //   //     }
+  //   //   });
+  // }
+
+
+  onFileSelected(event: any): void {
+
+    let formData = new FormData();
+    formData.append("x", event.target.files[0]);
+    this.http.post('http://localhost:8080/upload', formData)
+      .subscribe((response: { img_url: string}) => {
+        this.url_photo = response.img_url
+
+      })
+  }
+
+  uploadFile(files: File[]): void {
+    // const formData: FormData = new FormData();
+    // formData.append('file', file, file.name);
+
+
+
+    // this.http.post('http://localhost:8080/upload', formData)
+    //   .subscribe(response => {
+    //     console.log('Upload successful:', response);
+    //   }, error => {
+    //     console.error('Error uploading file:', error);
     //   });
   }
 
