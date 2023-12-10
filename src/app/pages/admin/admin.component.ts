@@ -9,6 +9,7 @@ import { Product } from '../../interfaces/table';
 import { FirestoreService } from '../../services/firestore.service';
 import { ProductService } from '../../services/product.service';
 import { HttpClient } from '@angular/common/http';
+import { PRODUCTS_URL } from '../../constants';
 
 @Component({
   selector: 'app-admin',
@@ -52,7 +53,7 @@ export class AdminComponent {
 
     this.firestoreService.addProduct({
       ...this.profileForm.value,
-      images: [this.url_photo]
+      images: [this.url_photo],
     });
     // this.afs
     //   .collection('products')
@@ -111,24 +112,19 @@ export class AdminComponent {
   //   //   });
   // }
 
-
   onFileSelected(event: any): void {
-
     let formData = new FormData();
-    formData.append("x", event.target.files[0]);
-    this.http.post('http://localhost:8080/upload', formData)
-      .subscribe((response: { img_url: string}) => {
-        this.url_photo = response.img_url
-
-      })
+    formData.append('x', event.target.files[0]);
+    this.http
+      .post('http://localhost:8080/upload', formData)
+      .subscribe((response: { img_url: string }) => {
+        this.url_photo = response.img_url;
+      });
   }
 
   uploadFile(files: File[]): void {
     // const formData: FormData = new FormData();
     // formData.append('file', file, file.name);
-
-
-
     // this.http.post('http://localhost:8080/upload', formData)
     //   .subscribe(response => {
     //     console.log('Upload successful:', response);
@@ -138,15 +134,15 @@ export class AdminComponent {
   }
 
   handleActionEdit({
-                     id,
-                     title,
-                     category,
-                     price,
-                     small_description,
-                     full_description,
-                     images,
-                     hide,
-                   }: Product) {
+    id,
+    title,
+    category,
+    price,
+    small_description,
+    full_description,
+    images,
+    hide,
+  }: Product) {
     this.isEdit = true;
 
     this.profileForm.setValue({
@@ -158,37 +154,37 @@ export class AdminComponent {
       hide: hide,
     });
     this.url_photo = images[0];
-    this.documentId = id
+    this.documentId = id;
   }
 
   saveProduct() {
     this.firestoreService.update({
       id: this.documentId,
-        title: this.profileForm.value.title,
-        category: this.profileForm.value.category,
-        price: this.profileForm.value.price,
-        small_description: this.profileForm.value.small_description,
-        full_description: this.profileForm.value.full_description,
-        images: [this.url_photo],
-        hide: this.profileForm.value.hide,
-    })
+      title: this.profileForm.value.title,
+      category: this.profileForm.value.category,
+      price: this.profileForm.value.price,
+      small_description: this.profileForm.value.small_description,
+      full_description: this.profileForm.value.full_description,
+      images: [this.url_photo],
+      hide: this.profileForm.value.hide,
+    });
     // this.afs
-      // .collection('products')
-      // .doc(this.documentId)
-      // .update({
-      //   title: this.profileForm.value.title,
-      //   category: this.profileForm.value.category,
-      //   price: this.profileForm.value.price,
-      //   small_description: this.profileForm.value.small_description,
-      //   full_description: this.profileForm.value.full_description,
-      //   images: [this.url_photo],
-      //   hide: this.profileForm.value.hide,
-      // })
-      // .catch(error => {
-      //   // TODO: Handle
-      //   // loading.dismiss();
-      //   // this.toast(error.message, 'danger');
-      // });
+    // .collection('products')
+    // .doc(this.documentId)
+    // .update({
+    //   title: this.profileForm.value.title,
+    //   category: this.profileForm.value.category,
+    //   price: this.profileForm.value.price,
+    //   small_description: this.profileForm.value.small_description,
+    //   full_description: this.profileForm.value.full_description,
+    //   images: [this.url_photo],
+    //   hide: this.profileForm.value.hide,
+    // })
+    // .catch(error => {
+    //   // TODO: Handle
+    //   // loading.dismiss();
+    //   // this.toast(error.message, 'danger');
+    // });
     this.profileForm.reset();
     this.url_photo = '';
     if (this.fileInput) {

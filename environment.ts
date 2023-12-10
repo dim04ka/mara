@@ -9,4 +9,7 @@ export const environment = {
     appId: '1:1013568098588:web:3b6b5aa529c4779c01aad9',
     measurementId: 'G-4ELYTHRVEH',
   },
+  mapbox: {
+    accessToken: '<TOKEN HERE>',
+  },
 };

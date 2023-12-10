@@ -11,3 +11,5 @@ export const categoryGroupById = {
   // '2': 'candlewick',
   // '3': 'other',
 };
+
+export const PRODUCTS_URL = 'https://back-ashy-six.vercel.app'

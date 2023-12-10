@@ -19,7 +19,6 @@ import { MatBadgeModule } from '@angular/material/badge';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { DescriptionComponent } from './pages/description/description.component';
 import { AdminComponent } from './pages/admin/admin.component';
-
 import { environment } from '../environments/environment';
 
 // import { AngularFireModule } from '@angular/fire/compat';
@@ -40,6 +39,15 @@ import { BreadcrumbsComponent } from './components/breadcrumbs/breadcrumbs.compo
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { LoaderComponent } from './shared/loader/loader.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { ContactComponent } from './pages/contact/contact.component';
+import { DeliveryComponent } from './pages/delivery/delivery.component';
+
+import { AngularYandexMapsModule, IConfig } from 'angular8-yandex-maps';
+
+const mapConfig: IConfig = {
+  apikey: '69fe71a6-4d34-41cf-96ee-3d489c6a9aff',
+  lang: 'en_US',
+};
 @NgModule({
   declarations: [
     AppComponent,
@@ -60,6 +68,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     CategoryRootComponent,
     BreadcrumbsComponent,
     LoaderComponent,
+    ContactComponent,
+    DeliveryComponent,
   ],
   imports: [
     // AngularFireModule.initializeApp(),
@@ -81,6 +91,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     MatCheckboxModule,
     MatProgressSpinnerModule,
     MatSidenavModule,
+    AngularYandexMapsModule.forRoot(mapConfig),
   ],
   providers: [],
   bootstrap: [AppComponent],

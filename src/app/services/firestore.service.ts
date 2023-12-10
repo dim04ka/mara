@@ -2,8 +2,9 @@ import { Injectable } from '@angular/core';
 import { Product } from '../interfaces/table';
 import { ProductService } from './product.service';
 import { HttpClient } from '@angular/common/http';
+import { PRODUCTS_URL } from '../constants';
 
-const PRODUCTS_URL = 'https://back-ashy-six.vercel.app'
+
 
 @Injectable({
   providedIn: 'root',

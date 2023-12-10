@@ -1,0 +1,33 @@
+.block{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  align-items: center;
+  padding-bottom: 20px;
+
+
+  @media (max-width: 1180px) {
+    gap: 20px;
+    grid-template-columns: 1fr;
+  }
+
+  img {
+    width: 100%;
+    max-width: 400px;
+  }
+}
+
+.delivery {
+  h1{
+    text-align: center;
+    font-size: 32px;
+  }
+  .description{
+    max-width: 500px;
+    margin: 0 auto 100px;
+    text-align: center;
+    font-size: 15px;
+  }
+
+
+}

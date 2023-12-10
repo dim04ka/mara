@@ -5,6 +5,8 @@ import { BasketPageComponent } from './pages/basket/basket.component';
 import { AdminComponent } from './pages/admin/admin.component';
 import { CategoryRootComponent } from './pages/category-root/category-root.component';
 import { DescriptionComponent } from './pages/description/description.component';
+import { ContactComponent } from './pages/contact/contact.component';
+import { DeliveryComponent } from './pages/delivery/delivery.component';
 
 // @ts-ignore
 const routes: Routes = [
@@ -27,6 +29,14 @@ const routes: Routes = [
   {
     path: 'admin',
     component: AdminComponent,
+  },
+  {
+    path: 'contact',
+    component: ContactComponent,
+  },
+  {
+    path: 'delivery',
+    component: DeliveryComponent,
   },
   {
     path: '**',

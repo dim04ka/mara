@@ -1,0 +1,23 @@
+<section>
+  <div class='contact'>
+    <div>
+      <h1>Контакты</h1>
+      <p>У нас очень дружелюбная команда, поэтому если у вас возникли какие -либо вопросы, вы можете задать нам их в инстаграмме, телегпамме,  по телефону или можете написать нам на электронную почту</p>
+      <p>наша команды работает над созданием  офлайн магазина, чтобы вы смогли послушать ароматы, посмотреть и приобрести товары, указанные на сайте.</p>
+      <p>Заказы принимаются ежедневно 24/7</p>
+      <p>время доставки и самовывоза(Тбилиси): с 10.00 до 21.00</p>
+    </div>
+    <div>
+      <ya-map [center]="[41.681992, 44.839039]" [zoom]='16'>
+        <ya-clusterer [options]="clustererOptions">
+          <ya-placemark
+            *ngFor="let placemark of placemarks"
+            [geometry]="placemark.geometry"
+            [properties]="placemark.properties"
+            [options]="placemark.options"
+          ></ya-placemark>
+        </ya-clusterer>
+      </ya-map>
+    </div>
+  </div>
+</section>
