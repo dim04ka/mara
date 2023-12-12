@@ -41,6 +41,7 @@ import { LoaderComponent } from './shared/loader/loader.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { ContactComponent } from './pages/contact/contact.component';
 import { DeliveryComponent } from './pages/delivery/delivery.component';
+import { AngularYandexMapsModule } from 'angular8-yandex-maps';
 
 // import { AngularYandexMapsModule, IConfig } from 'angular8-yandex-maps';
 //
@@ -91,6 +92,7 @@ import { DeliveryComponent } from './pages/delivery/delivery.component';
     MatCheckboxModule,
     MatProgressSpinnerModule,
     MatSidenavModule,
+    AngularYandexMapsModule,
     // AngularYandexMapsModule.forRoot(mapConfig),
   ],
   providers: [],
