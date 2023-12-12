@@ -42,12 +42,12 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { ContactComponent } from './pages/contact/contact.component';
 import { DeliveryComponent } from './pages/delivery/delivery.component';
 
-import { AngularYandexMapsModule, IConfig } from 'angular8-yandex-maps';
-
-const mapConfig: IConfig = {
-  apikey: '69fe71a6-4d34-41cf-96ee-3d489c6a9aff',
-  lang: 'en_US',
-};
+// import { AngularYandexMapsModule, IConfig } from 'angular8-yandex-maps';
+//
+// const mapConfig: IConfig = {
+//   apikey: '69fe71a6-4d34-41cf-96ee-3d489c6a9aff',
+//   lang: 'en_US',
+// };
 @NgModule({
   declarations: [
     AppComponent,
@@ -91,7 +91,7 @@ const mapConfig: IConfig = {
     MatCheckboxModule,
     MatProgressSpinnerModule,
     MatSidenavModule,
-    AngularYandexMapsModule.forRoot(mapConfig),
+    // AngularYandexMapsModule.forRoot(mapConfig),
   ],
   providers: [],
   bootstrap: [AppComponent],
