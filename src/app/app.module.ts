@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, Meta } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,8 +21,6 @@ import { DescriptionComponent } from './pages/description/description.component'
 import { AdminComponent } from './pages/admin/admin.component';
 import { environment } from '../environments/environment';
 
-// import { AngularFireModule } from '@angular/fire/compat';
-// import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { TableComponent } from './components/table/table.component';
 import { MatTableModule } from '@angular/material/table';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -94,7 +92,7 @@ const mapConfig: IConfig = {
     AngularYandexMapsModule,
     AngularYandexMapsModule.forRoot(mapConfig),
   ],
-  providers: [],
+  providers: [Meta],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
