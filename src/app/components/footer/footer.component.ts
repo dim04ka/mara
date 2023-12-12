@@ -10,25 +10,24 @@ export class FooterComponent {
     {
       title: 'товар',
       items: [
-        { name: 'Свечи', id: 'candles' },
-        { name: 'Воски', id: 'vox' },
-        { name: 'Фитили', id: 'f' },
-        { name: 'Аромамасла', id: 'f' },
-        { name: 'Другой товар', id: 'other' },
+        { name: 'Свечи', id: 'category/candles' },
+        { name: 'Воски', id: 'category/wax' },
+        { name: 'Фитили', id: 'category/candlewick' },
+        { name: 'Другой товар', id: 'category/other' },
       ],
     },
     {
       title: 'магазин',
       items: [
-        { name: 'O нас', id: 'about-us' },
+        { name: 'O нас', id: '/' },
         { name: 'Контакты', id: 'contact' },
       ],
     },
     {
       title: 'покупателям',
       items: [
-        { name: 'Блог', id: 'blog' },
-        { name: 'FAQ', id: 'faq' },
+        { name: 'Блог', id: '/' },
+        { name: 'FAQ', id: '/' },
         { name: 'Доставка и оплата', id: 'delivery' },
       ],
     },

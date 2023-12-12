@@ -1,3 +1,5 @@
+@import '../../../styles/variables.scss';
+
 section {
   padding: 50px 0;
   background-color: #252525;
@@ -24,6 +26,19 @@ section {
     text-transform: uppercase;
     margin-bottom: 20px;
   }
+
+  a{
+    color: white;
+    text-decoration: none;
+
+    border-bottom: 1px solid transparent;
+    transition: all .3s;
+
+    &:hover {
+      border-bottom: 1px solid rgba(255, 255, 255, 1);
+    }
+  }
+
 }
 
 ul{

@@ -3,7 +3,9 @@
     <div class='column' *ngFor='let item of date'>
       <h2>{{item.title}}</h2>
       <ul>
-        <li *ngFor='let i of item.items'>{{i.name}}</li>
+        <li *ngFor='let i of item.items'>
+          <a [routerLink]='i.id'>{{i.name}}</a>
+        </li>
       </ul>
     </div>
     <div class='logo'>

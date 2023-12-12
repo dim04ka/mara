@@ -1,3 +1,5 @@
+@import '../../../styles/variables.scss';
+
 section {
   padding: 20px 0;
   @media (max-width: 1180px) {
@@ -34,6 +36,7 @@ section {
 .menu {
   display: flex;
   gap: 35px;
+  align-items: self-start;
 
   &__block {
     width: 300px;
@@ -43,6 +46,11 @@ section {
     @media (max-width: 1180px) {
       display: none;
     }
+
+    a {
+      @include links
+    }
+
   }
 
   &__logo {
