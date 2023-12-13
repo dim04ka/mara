@@ -26,8 +26,8 @@ export class FooterComponent {
     {
       title: 'покупателям',
       items: [
-        { name: 'Блог', id: '/' },
-        { name: 'FAQ', id: '/' },
+        { name: 'Блог', id: 'blog' },
+        { name: 'FAQ', id: 'faq' },
         { name: 'Доставка и оплата', id: 'delivery' },
       ],
     },

@@ -3,7 +3,7 @@
   <mat-sidenav position="end" #sidenav autoFocus="false" mode="over" [(opened)]="isMenuOpen" class="sidenav">
     <ul>
       <li class='line' *ngFor="let category of categories">
-        <a  mat-button [routerLink]="'/category/'+category.url" [routerLinkActive]="['active']" (click)='sidenav.toggle()'>{{category.name}}</a>
+        <a mat-button [routerLink]="'/category/'+category.url" [routerLinkActive]="['active']" (click)='sidenav.toggle()'>{{category.name}}</a>
       </li>
     </ul>
   </mat-sidenav>

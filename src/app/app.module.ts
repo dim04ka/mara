@@ -43,6 +43,8 @@ import { DeliveryComponent } from './pages/delivery/delivery.component';
 import { AngularYandexMapsModule, IConfig } from 'angular8-yandex-maps';
 import { MatChipsModule } from '@angular/material/chips';
 import { inject } from '@vercel/analytics';
+import { BlogComponent } from './pages/blog/blog.component';
+import { FaqComponent } from './pages/faq/faq.component';
 
 inject();
 
@@ -72,6 +74,8 @@ const mapConfig: IConfig = {
     LoaderComponent,
     ContactComponent,
     DeliveryComponent,
+    BlogComponent,
+    FaqComponent,
   ],
   imports: [
     // AngularFireModule.initializeApp(),
