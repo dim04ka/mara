@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, inject, ViewChild } from '@angular/core';
 import { BehaviorSubject, finalize, Observable, of } from 'rxjs';
 import { FormControl, FormGroup } from '@angular/forms';
 import { FileUploadServiceService } from '../../services/file-upload-service.service';
@@ -10,7 +10,12 @@ import { FirestoreService } from '../../services/firestore.service';
 import { ProductService } from '../../services/product.service';
 import { HttpClient } from '@angular/common/http';
 import { PRODUCTS_URL } from '../../constants';
-
+import { COMMA, ENTER } from '@angular/cdk/keycodes';
+import { LiveAnnouncer } from '@angular/cdk/a11y';
+import { MatChipEditedEvent, MatChipInputEvent } from '@angular/material/chips';
+export interface Images {
+  url: string;
+}
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
@@ -33,6 +38,9 @@ export class AdminComponent {
     this.productService.products$.subscribe(data => {
       this.data.next(data);
     });
+
+    this.isAdmin = JSON.parse(localStorage.getItem('isAdmin'));
+    console.log('this.isAdmin', this.isAdmin);
   }
 
   profileForm = new FormGroup({
@@ -50,88 +58,17 @@ export class AdminComponent {
 
   addProduct() {
     const uuid = new UUID();
-
     this.firestoreService.addProduct({
       ...this.profileForm.value,
-      images: [this.url_photo],
+      images: this.images,
     });
-    // this.afs
-    //   .collection('products')
-    //   .add({
-    //     ...this.profileForm.value,
-    //     images: [this.url_photo],
-    //     id: uuid.getDashFreeUUID(),
-    //   })
-    //   .catch(error => {
-    //     // loading.dismiss();
-    //     // this.toast(error.message, 'danger');
-    //   });
+    this.images = [];
     this.profileForm.reset();
     this.url_photo = '';
-    if (this.fileInput) {
-      this.fileInput.nativeElement.value = '';
-    }
   }
 
-  selectedFile: File | null = null;
-  downloadURL: Observable<string> | null = null;
   url_photo = '';
   isEdit = false;
-
-  // onFileSelected(event: any) {
-  //
-  //   console.log('event', event.target.files)
-  //
-  //   this.fileUploadService.uploadFile(event.target.files).subscribe(url => {
-  //     console.log('url done', url);
-  //   })
-  //
-  //   // var n = Date.now();
-  //   // const file = event.target.files[0];
-  //   // const filePath = `products/${n}`;
-  //   // const fileRef = this.storage.ref(filePath);
-  //   // const task = this.storage.upload(`products/${n}`, file);
-  //   // task
-  //   //   .snapshotChanges()
-  //   //   .pipe(
-  //   //     finalize(() => {
-  //   //       this.downloadURL = fileRef.getDownloadURL();
-  //   //       this.downloadURL.subscribe(url => {
-  //   //         if (url) {
-  //   //           console.log('URL===', url);
-  //   //           this.url_photo = url;
-  //   //         }
-  //   //         // console.log(this.fb);
-  //   //       });
-  //   //     }),
-  //   //   )
-  //   //   .subscribe(url => {
-  //   //     if (url) {
-  //   //       console.log('url end', url);
-  //   //     }
-  //   //   });
-  // }
-
-  onFileSelected(event: any): void {
-    let formData = new FormData();
-    formData.append('x', event.target.files[0]);
-    this.http
-      .post('http://localhost:8080/upload', formData)
-      .subscribe((response: { img_url: string }) => {
-        this.url_photo = response.img_url;
-      });
-  }
-
-  uploadFile(files: File[]): void {
-    // const formData: FormData = new FormData();
-    // formData.append('file', file, file.name);
-    // this.http.post('http://localhost:8080/upload', formData)
-    //   .subscribe(response => {
-    //     console.log('Upload successful:', response);
-    //   }, error => {
-    //     console.error('Error uploading file:', error);
-    //   });
-  }
 
   handleActionEdit({
     id,
@@ -153,7 +90,7 @@ export class AdminComponent {
       full_description: full_description,
       hide: hide,
     });
-    this.url_photo = images[0];
+    this.images = images;
     this.documentId = id;
   }
 
@@ -165,76 +102,70 @@ export class AdminComponent {
       price: this.profileForm.value.price,
       small_description: this.profileForm.value.small_description,
       full_description: this.profileForm.value.full_description,
-      images: [this.url_photo],
+      images: this.images,
       hide: this.profileForm.value.hide,
     });
-    // this.afs
-    // .collection('products')
-    // .doc(this.documentId)
-    // .update({
-    //   title: this.profileForm.value.title,
-    //   category: this.profileForm.value.category,
-    //   price: this.profileForm.value.price,
-    //   small_description: this.profileForm.value.small_description,
-    //   full_description: this.profileForm.value.full_description,
-    //   images: [this.url_photo],
-    //   hide: this.profileForm.value.hide,
-    // })
-    // .catch(error => {
-    //   // TODO: Handle
-    //   // loading.dismiss();
-    //   // this.toast(error.message, 'danger');
-    // });
     this.profileForm.reset();
-    this.url_photo = '';
-    if (this.fileInput) {
-      this.fileInput.nativeElement.value = '';
-    }
+    this.images = [];
   }
 
   documentId = '';
   value: any;
 
-  // getDocumentId(fieldName: string, fieldValue: string) {
-  //   this.dataService
-  //     .getDocumentIdByFieldValue(fieldName, fieldValue)
-  //     .subscribe(data => {
-  //       if (data.length > 0) {
-  //         this.documentId = data[0].payload.doc.id;
-  //         console.log('Document ID:', this.documentId);
-  //       } else {
-  //         console.log('Document not found');
-  //       }
-  //     });
-  // }
-
   handleActionDelete(product: Product) {
     this.firestoreService.delete(product.id);
-    // this.afs
-    // .collection('products')
-    // .doc(product.id)
-    // .delete()
-    // .catch(error => {
-    //     // TODO: Handle
-    //     // loading.dismiss();
-    //     // this.toast(error.message, 'danger');
-    // this.dataService
-    //   .getDocumentIdByFieldValue('id', product.id)
-    //   .subscribe(data => {
-    //     if (data.length > 0) {
-    //       this.dataService
-    //         .deleteDocumentInCollection('products', data[0].payload.doc.id)
-    //         .then(() => console.log('Document deleted successfully'))
-    //         .catch(error => console.error('Error deleting document:', error));
-    //     } else {
-    //       console.log('Document not found');
-    //     }
-    //   });
   }
 
   isAdmin = false;
 
   check(value: string) {
-    if (value === 'qwerty123') this.isAdmin = true;
+    if (value === 'qwerty123') {
+      this.isAdmin = true;
+      localStorage.setItem('isAdmin', 'true');
+    }
+  }
+
+  addOnBlur = true;
+  readonly separatorKeysCodes = [ENTER, COMMA] as const;
+  images: Images[] = [];
+
+  announcer = inject(LiveAnnouncer);
+
+  add(event: MatChipInputEvent): void {
+    const value = (event.value || '').trim();
+
+    // Add our fruit
+    if (value) {
+      this.images.push({ url: value });
+    }
+
+    // Clear the input value
+    event.chipInput!.clear();
+  }
+
+  remove(image: Images): void {
+    const index = this.images.indexOf(image);
+
+    if (index >= 0) {
+      this.images.splice(index, 1);
+
+      this.announcer.announce(`Removed ${image}`);
+    }
+  }
+
+  edit(image: Images, event: MatChipEditedEvent) {
+    const value = event.value.trim();
+
+    // Remove fruit if it no longer has a name
+    if (!value) {
+      this.remove(image);
+      return;
+    }
+
+    // Edit existing fruit
+    const index = this.images.indexOf(image);
+    if (index >= 0) {
+      this.images[index].url = value;
+    }
   }
 }

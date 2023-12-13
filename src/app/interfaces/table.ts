@@ -24,7 +24,7 @@ export interface ITableColumns {
 
 export interface Product {
   id: string;
-  images: string[];
+  images: { url: string }[];
   title: string;
   price: string;
   full_description: string;

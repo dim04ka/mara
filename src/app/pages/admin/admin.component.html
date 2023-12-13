@@ -35,23 +35,32 @@
           <input matInput placeholder='Placeholder' formControlName='small_description'>
         </mat-form-field>
 
-<!--        <mat-form-field appearance="fill">-->
-<!--          <mat-label>Check me!</mat-label>-->
-<!--          <ng-container formGroupName="profileForm">-->
-<!--            <input type="checkbox" formControlName="hide">-->
-<!--          </ng-container>-->
-<!--        </mat-form-field>-->
         <input type='checkbox' formControlName="hide">
-        <div>{{JSON.stringify(profileForm.value) }}</div>
+        <mat-form-field class="example-chip-list">
+          <mat-label>Favorite Fruits</mat-label>
+          <mat-chip-grid #chipGrid aria-label="Enter fruits">
+            <mat-chip-row *ngFor="let image of images"
+              (removed)="remove(image)"
+              [editable]="true"
+              (edited)="edit(image, $event)"
+              [aria-description]="'press enter to edit ' + image.url">
+              <mat-chip>
+                <img matChipAvatar [src]="image.url"/>
+              </mat-chip>
 
-        <input type='file'
-               id='file'
-               #fileInput
-               (change)='onFileSelected($event)'
-               name='files'
-               autocomplete='off'
-        />
-        <img [src]='url_photo' style='height: 100px; width: 100px'/>
+            <button matChipRemove [attr.aria-label]="'remove ' + image.url">
+              <mat-icon>cancel</mat-icon>
+            </button>
+          </mat-chip-row>
+
+            <input placeholder="New fruit..."
+                   [matChipInputFor]="chipGrid"
+                   [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                   [matChipInputAddOnBlur]="addOnBlur"
+                   (matChipInputTokenEnd)="add($event)"/>
+          </mat-chip-grid>
+        </mat-form-field>
+
         <button color='primary' mat-button (click)='addProduct()'>Add</button>
         <button color='primary' mat-button (click)='saveProduct()'>Save</button>
       </form>

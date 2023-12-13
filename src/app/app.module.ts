@@ -41,6 +41,7 @@ import { ContactComponent } from './pages/contact/contact.component';
 import { DeliveryComponent } from './pages/delivery/delivery.component';
 
 import { AngularYandexMapsModule, IConfig } from 'angular8-yandex-maps';
+import { MatChipsModule } from '@angular/material/chips';
 
 const mapConfig: IConfig = {
   apikey: '69fe71a6-4d34-41cf-96ee-3d489c6a9aff',
@@ -91,6 +92,7 @@ const mapConfig: IConfig = {
     MatSidenavModule,
     AngularYandexMapsModule,
     AngularYandexMapsModule.forRoot(mapConfig),
+    MatChipsModule,
   ],
   providers: [Meta],
   bootstrap: [AppComponent],

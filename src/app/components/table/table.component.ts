@@ -67,7 +67,7 @@ export class TableComponent {
     {
       columnDef: Column.Images,
       header: 'Image',
-      cell: ({ images }) => images[0],
+      cell: ({ images }) => images[0].url,
       // filterType: FILTER_TYPE.TEXT,
       save: (value: any) => {
         console.log('value', value);

@@ -1,6 +1,6 @@
 <div class='card' *ngIf='product'>
   <a [routerLink]='product.id'>
-    <div class='photo' [style.background-image]="'url(' + product.images[0] + ')'"></div>
+    <div class='photo' [style.background-image]="'url(' + product.images[0].url + ')'"></div>
   </a>
 
   <div class='card__title'>{{product.title}}</div>

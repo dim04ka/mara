@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 // import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { DataService } from '../../services/data.service';
@@ -15,6 +15,8 @@ import { FirestoreService } from '../../services/firestore.service';
   styleUrls: ['./description.component.scss'],
 })
 export class DescriptionComponent {
+  // @ViewChild('wrapper') wrapper!: ElementRef;
+
   constructor(
     private route: ActivatedRoute,
     private dataService: DataService,
@@ -41,7 +43,7 @@ export class DescriptionComponent {
       },
       {
         name: 'og:image',
-        content: this.product.images[0],
+        content: this.product.images[0].url,
       },
       { name: 'robots', content: 'index,follow' },
       { property: 'og:title', content: this.product.title },
@@ -58,6 +60,8 @@ export class DescriptionComponent {
 
       this.getData();
     });
+    // this.wrapper.nativeElement
+    // console.log('this.wrapper.nativeElement', this.wrapper);
   }
 
   product: Product | null = null;
@@ -73,5 +77,24 @@ export class DescriptionComponent {
 
   addToBasket({ id, count }: Item) {
     this.basketService.addToBasket({ id: id, count: count });
+  }
+
+  currentImage = '';
+  currentImageIndex = 0;
+  setImage(url: string) {
+    this.currentImage = url;
+  }
+
+  nextSlide() {
+    if (this.product.images.length <= this.currentImageIndex + 1) return;
+    this.currentImageIndex = this.currentImageIndex + 1;
+    this.currentImage = this.product.images[this.currentImageIndex].url;
+  }
+
+  prevSlide() {
+    if (this.currentImageIndex !== 0) {
+      this.currentImageIndex = this.currentImageIndex - 1;
+      this.currentImage = this.product.images[this.currentImageIndex].url;
+    }
   }
 }
