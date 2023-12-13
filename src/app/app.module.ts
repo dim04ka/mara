@@ -42,6 +42,9 @@ import { DeliveryComponent } from './pages/delivery/delivery.component';
 
 import { AngularYandexMapsModule, IConfig } from 'angular8-yandex-maps';
 import { MatChipsModule } from '@angular/material/chips';
+import { inject } from '@vercel/analytics';
+
+inject();
 
 const mapConfig: IConfig = {
   apikey: '69fe71a6-4d34-41cf-96ee-3d489c6a9aff',
