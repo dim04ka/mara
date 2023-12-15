@@ -23,7 +23,6 @@ export class BasketService {
 
   addToBasket(item: { id: string; count: number }) {
     const v = this.basket.value;
-    console.log('item', item);
     if (v.find(el => el.id === item.id)) {
       const res = v.map(el => {
         if (el.id === item.id) {
@@ -34,7 +33,6 @@ export class BasketService {
         }
         return el;
       });
-      console.log('res', res);
       this.basket.next(res);
     } else {
       this.basket.next([...this.basket.value, item]);

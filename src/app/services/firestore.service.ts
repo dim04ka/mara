@@ -4,8 +4,6 @@ import { ProductService } from './product.service';
 import { HttpClient } from '@angular/common/http';
 import { PRODUCTS_URL } from '../constants';
 
-
-
 @Injectable({
   providedIn: 'root',
 })
@@ -16,30 +14,27 @@ export class FirestoreService {
   ) {}
 
   loadValues(): void {
-     this.http.get(PRODUCTS_URL+'/products').subscribe((products: Product[]) => {
-       this.productService.setProduct(products);
-     })
+    this.http
+      .get(PRODUCTS_URL + '/products')
+      .subscribe((products: Product[]) => {
+        this.productService.setProduct(products);
+      });
   }
 
   addProduct(product: any): void {
-    this.http.post(PRODUCTS_URL+'/create', product).subscribe((res) => {
-      // this.productService.setProduct([...this.productService.products$.value, product]);
-      console.log('res')
-
-      this.loadValues()
-    })
+    this.http.post(PRODUCTS_URL + '/create', product).subscribe(res => {
+      this.loadValues();
+    });
   }
-  update(product: any):void{
-    this.http.post(PRODUCTS_URL+'/update', product).subscribe(() => {
-      // this.productService.setProduct([...this.productService.products$.value, product]);
-      this.loadValues()
-    })
+  update(product: any): void {
+    this.http.post(PRODUCTS_URL + '/update', product).subscribe(() => {
+      this.loadValues();
+    });
   }
 
   delete(id: string): void {
-    this.http.delete(PRODUCTS_URL+`/delete/${id}`).subscribe(() => {
-      // this.productService.setProduct([...this.productService.products$.value, product]);
-      this.loadValues()
-    })
+    this.http.delete(PRODUCTS_URL + `/delete/${id}`).subscribe(() => {
+      this.loadValues();
+    });
   }
 }

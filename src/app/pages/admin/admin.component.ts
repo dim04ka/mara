@@ -1,15 +1,10 @@
 import { Component, ElementRef, inject, ViewChild } from '@angular/core';
-import { BehaviorSubject, finalize, Observable, of } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { FormControl, FormGroup } from '@angular/forms';
-import { FileUploadServiceService } from '../../services/file-upload-service.service';
-// import { AngularFireStorage } from '@angular/fire/compat/storage';
-import { DataService } from '../../services/data.service';
 import { UUID } from 'uuid-generator-ts';
 import { Product } from '../../interfaces/table';
 import { FirestoreService } from '../../services/firestore.service';
 import { ProductService } from '../../services/product.service';
-import { HttpClient } from '@angular/common/http';
-import { PRODUCTS_URL } from '../../constants';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { MatChipEditedEvent, MatChipInputEvent } from '@angular/material/chips';
@@ -26,13 +21,8 @@ export class AdminComponent {
   data = new BehaviorSubject<Product[]>([]);
 
   constructor(
-    private fileUploadService: FileUploadServiceService,
-    // private storage: AngularFireStorage,
-    private dataService: DataService,
     private firestoreService: FirestoreService,
-    private productService: ProductService,
-    private http: HttpClient,
-    private elementRef: ElementRef
+    private productService: ProductService
   ) {
     this.firestoreService.loadValues();
     this.productService.products$.subscribe(data => {
@@ -40,7 +30,6 @@ export class AdminComponent {
     });
 
     this.isAdmin = JSON.parse(localStorage.getItem('isAdmin'));
-    console.log('this.isAdmin', this.isAdmin);
   }
 
   profileForm = new FormGroup({

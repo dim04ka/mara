@@ -1,7 +1,5 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-// import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { DataService } from '../../services/data.service';
 import { BasketService } from '../../services/basket.service';
 import { Product } from '../../interfaces/table';
 import { Item } from '../../interfaces/basket';
@@ -16,11 +14,8 @@ import { CATEGORY_URL } from '../../interfaces/category';
   styleUrls: ['./description.component.scss'],
 })
 export class DescriptionComponent {
-  // @ViewChild('wrapper') wrapper!: ElementRef;
-
   constructor(
     private route: ActivatedRoute,
-    private dataService: DataService,
     private basketService: BasketService,
     private productService: ProductService,
     private metaService: Meta,
@@ -61,8 +56,6 @@ export class DescriptionComponent {
 
       this.getData();
     });
-    // this.wrapper.nativeElement
-    // console.log('this.wrapper.nativeElement', this.wrapper);
   }
 
   product: Product | null = null;
@@ -82,9 +75,6 @@ export class DescriptionComponent {
 
   currentImage = '';
   currentImageIndex = 0;
-  setImage(url: string) {
-    this.currentImage = url;
-  }
 
   nextSlide() {
     if (this.product.images.length <= this.currentImageIndex + 1) return;

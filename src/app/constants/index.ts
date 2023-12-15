@@ -38,17 +38,21 @@ export const categories: ICategory[] = [
   {
     name: 'Свечи',
     url: 'candles',
-    img: '/assets/images/category-candles.png',
+    img: '/assets/images/category/category-candles.png',
   },
   {
     name: 'Воски',
     url: 'wax',
-    img: '/assets/images/category-vox.png',
+    img: '/assets/images/category/category-vox.png',
   },
   {
     name: 'Фитили',
     url: 'candlewick',
-    img: '/assets/images/category-wick.png',
+    img: '/assets/images/category/category-wick.png',
   },
-  { name: 'Другое', url: 'other', img: '/assets/images/category-other.png' },
+  {
+    name: 'Другое',
+    url: 'other',
+    img: '/assets/images/category/category-other.png',
+  },
 ];

@@ -4,12 +4,36 @@ section{
 
 .category{
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   gap: 39px;
   color: white;
 
+  &-image{
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+
+  }
+
+  & div {
+    transition: all 0.5s ease-in-out;
+    &:hover{
+      box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    }
+    overflow: hidden;
+  }
+
+
   @media (max-width: 1180px) {
     grid-template-columns: 1fr;
+  }
+
+
+  & a {
+
+    & div:hover {
+      transform: scale(1.2);
+    }
   }
 
 
@@ -24,42 +48,12 @@ section{
     @media screen and (max-width: 1180px) {
       width: 100%;
     }
-
-    &:hover {
-      font-size: 58px;
-      //transform: scale(1.1);
-    }
   }
 
   span {
     position: absolute;
-    top: 20px;
-    right: 20px;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-45px);
   }
-
-  //& a:first-child{
-  //  div {
-  //    background-image: url('/assets/images/category-vox.png');
-  //  }
-  //
-  //}
-  //& a:nth-child(2) {
-  //  div {
-  //    background-image: url('/assets/images/category-wick.png');
-  //  }
-  //
-  //}
-  //& a:nth-child(3){
-  //  div {
-  //    background-image: url('/assets/images/category-candles.png');
-  //  }
-  //
-  //}
-  //& a:nth-child(4){
-  //  div{
-  //    flex: 1;
-  //    background-image: url('/assets/images/category-other.png');
-  //  }
-  //
-  //}
 }
