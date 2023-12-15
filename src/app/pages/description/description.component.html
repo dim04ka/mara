@@ -1,23 +1,14 @@
 <section>
   <div class='wrapper'>
-<!--    <p><a [routerLink]="'/'">Главная</a> / <a [routerLink]="'/cat/'+this.category">{{this.category}}</a> / <a-->
-<!--      [routerLink]="'/cat/'+this.category+'/'+id">{{product?.title}}</a></p>-->
     <app-breadcrumbs [category]='category' [idProduct]='id' [titleProduct]="product?.title || ''"></app-breadcrumbs>
     <div class='container'>
       <div class='gallery'>
-<!--        <button class='prev' (click)='prevSlide()' *ngIf='currentImageIndex !== 0'>prev</button>-->
-        <mat-icon class='prev' (click)='prevSlide()' *ngIf='currentImageIndex !== 0'>play_circle_outline</mat-icon>
-        <img [src]='currentImage || product?.images[0].url' />
-<!--        <button class='next' >-->
+        <div class='gallery-wrapper'>
+          <mat-icon class='prev' (click)='prevSlide()' *ngIf='currentImageIndex !== 0'>play_circle_outline</mat-icon>
+          <img [src]='currentImage || product?.images[0].url' />
           <mat-icon class='next' (click)='nextSlide()' *ngIf='currentImageIndex !== product.images.length - 1'>play_circle_outline</mat-icon>
-<!--        </button>-->
-<!--        <div class='photo' [style.background-image]="'url(' + product?.images[0].url || '' + ')'"></div>-->
-<!--        <div class='gallery-slide' #wrapper>-->
-<!--          <div class='image' *ngFor='let image of product.images.slice(1)'>-->
-<!--            <img [src]='image.url' [alt]='product.title' (click)='setImage(image.url)'/>-->
-<!--          </div>-->
-<!--        </div>-->
 
+        </div>
       </div>
 
         <div>

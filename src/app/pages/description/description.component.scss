@@ -30,7 +30,13 @@ h1{
 }
 
 .gallery{
-  position: relative;
+
+  &-wrapper{
+    max-width: 700px;
+    position: relative;
+  }
+
+
   mat-icon{
     position: absolute;
     top: 50%;

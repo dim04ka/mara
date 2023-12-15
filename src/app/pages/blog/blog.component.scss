@@ -1,0 +1,42 @@
+.blog{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+
+  &__post{
+    text-decoration: none;
+    color: black;
+    &-info{
+      padding: 20px;
+      background: white;
+      border-radius: 0 0 20px 20px;
+
+      &-title{
+        font-size: 20px;
+        font-weight: 500;
+        margin-bottom: 10px;
+      }
+
+      &-description{
+        color: rgb(135, 135, 135);
+        font-weight: 400;
+        font-size: 16px;
+      }
+
+    }
+
+    &-image {
+      border-radius: 20px 20px 0 0;
+      overflow: hidden;
+      img {
+        width: 100%;
+        max-height: 300px;
+        transition: all 0.2s ease-in-out;
+        &:hover{
+          transform: scale(1.1);
+        }
+      }
+    }
+  }
+}
+

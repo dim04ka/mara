@@ -1,1 +1,10 @@
-<p>Мы работаем над этим раздером</p>
+<section>
+  <mat-accordion multi="true">
+    <mat-expansion-panel *ngFor="let post of data">
+      <mat-expansion-panel-header> {{ post.title }}</mat-expansion-panel-header>
+      <mat-panel-description>
+        {{ post.description }}
+      </mat-panel-description>
+    </mat-expansion-panel>
+  </mat-accordion>
+</section>

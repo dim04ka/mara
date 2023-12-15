@@ -8,4 +8,11 @@ export const environment = {
     messagingSenderId: '1013568098588',
     measurementId: 'G-4ELYTHRVEH',
   },
+  mapConfig: {
+    apikey: '69fe71a6-4d34-41cf-96ee-3d489c6a9aff',
+  },
+  telegram: {
+    token: '6858475451:AAGTZ1BjJveNjVWZB3cn970F1UXIBey2hnU',
+    chatId: '-1001873241129',
+  },
 };

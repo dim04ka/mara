@@ -9,7 +9,7 @@
   </mat-sidenav>
   <mat-sidenav-content>
 
-    <app-infinity-menu-items [text]="data"></app-infinity-menu-items>
+    <app-infinity-menu-items [text]="infinityMenuItems"></app-infinity-menu-items>
     <app-menu [isMenuOpen]='isMenuOpen' (isMenuOpenChange)='sidenav.toggle()'></app-menu>
     <main>
       <router-outlet></router-outlet>

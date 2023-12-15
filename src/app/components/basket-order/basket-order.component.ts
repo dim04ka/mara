@@ -1,20 +1,16 @@
-import { Component, Input, OnChanges, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { BasketService } from '../../services/basket.service';
 import { IBasketOrder, Item } from '../../interfaces/basket';
 import { Column, ITableColumns, Product } from '../../interfaces/table';
-// import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { ProductService } from '../../services/product.service';
 import { categoryGroupById } from '../../constants';
-import { CATEGORY } from '../../interfaces/category';
-
-class ChangeEvent<T> {}
 
 @Component({
   selector: 'app-basket-order',
   templateUrl: './basket-order.component.html',
   styleUrls: ['./basket-order.component.scss'],
 })
-export class BasketOrderComponent implements OnChanges {
+export class BasketOrderComponent {
   tableColumns: ITableColumns[] = [
     {
       columnDef: Column.Images,
@@ -113,9 +109,6 @@ export class BasketOrderComponent implements OnChanges {
       this.isLoading = false;
     }
     const items = this.items.map(el => el.id);
-    // const filteredItems = this.products.filter(item =>
-    //   items.includes(item.id)
-    // );
     this.dataSource = this.products
       .filter(item => items.includes(item.id))
       .map(product => ({
@@ -138,38 +131,13 @@ export class BasketOrderComponent implements OnChanges {
     }, 0);
   }
 
-  update() {}
-
-  ngOnChanges() {
-    this.combineProducts();
-  }
-
-  combineProducts() {
-    // if (this.value.length > 0) {
-    //   const ids = this.value.map(el => el.id);
-    //   this.dataSource = this.products
-    //     .filter(el => ids.includes(el.id))
-    //     .map(el => {
-    //       return {
-    //         ...el,
-    //         countProduct: 0,
-    //         // this.value.find(elem => elem.id === el.id)?.count || 0,
-    //       };
-    //     });
-    // } else {
-    //   this.dataSource = [];
-    // }
-  }
-
   remove(id: string) {
-    console.log('idddddddd=', id);
     this.basketService.basket.next(
       this.basketService.basket.value.filter(el => el.id !== id)
     );
   }
 
   handleChange(e: any, id: any) {
-    console.log('e=', e.target.value, 'id=', id);
     this.basketService.basket.next(
       this.basketService.basket.value.map(el => {
         return {
@@ -181,14 +149,6 @@ export class BasketOrderComponent implements OnChanges {
   }
 
   reduceLink(element: Product) {
-    const data = {
-      '0': 'candles',
-      '1': 'wax',
-      '2': 'candlewick',
-      '3': 'other',
-    };
-
-    // @ts-ignore
-    return `/category/${data[element.category]}/${element.id}`;
+    return `/category/${categoryGroupById[element.category]}/${element.id}`;
   }
 }

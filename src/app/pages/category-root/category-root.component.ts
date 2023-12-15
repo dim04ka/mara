@@ -1,14 +1,12 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Product } from '../../interfaces/table';
-// import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { DataService } from '../../services/data.service';
 import { Item } from '../../interfaces/basket';
 import { BasketService } from '../../services/basket.service';
 import { ProductService } from '../../services/product.service';
 import { FirestoreService } from '../../services/firestore.service';
-import { categoryGroupByName } from '../../constants';
-import { CATEGORY } from '../../interfaces/category';
+import { categoryGroup } from '../../constants';
+import { CATEGORY_URL } from '../../interfaces/category';
 
 @Component({
   selector: 'app-category-root',
@@ -16,11 +14,10 @@ import { CATEGORY } from '../../interfaces/category';
   styleUrls: ['./category-root.component.scss'],
 })
 export class CategoryRootComponent {
-  category = '';
+  category: CATEGORY_URL | null = null;
   data: Product[] = [];
   constructor(
     private route: ActivatedRoute,
-    private dataService: DataService,
     private basketService: BasketService,
     private firestoreService: FirestoreService,
     private productService: ProductService
@@ -31,7 +28,8 @@ export class CategoryRootComponent {
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.category = params['category'];
-      this.productService.products$.subscribe(products => {
+
+      this.productService.products$.subscribe((products: Product[]) => {
         this.data = products.filter(
           product => product.category === this.categoryId(this.category)
         );
@@ -39,22 +37,11 @@ export class CategoryRootComponent {
     });
   }
 
-  getCategoryId(category: CATEGORY) {
-    return categoryGroupByName[category];
-  }
-
   addToBasket({ id, count }: Item) {
-    console.log('id: id, count: count ', id, count);
     this.basketService.addToBasket({ id: id, count: count });
   }
 
-  private categoryId(category: string) {
-    const categoryGroup: Record<any, string> = {
-      candles: '0',
-      wax: '1',
-      candlewick: '2',
-      other: '3',
-    };
+  private categoryId(category: CATEGORY_URL) {
     return categoryGroup[category];
   }
 }

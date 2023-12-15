@@ -45,11 +45,14 @@ import { MatChipsModule } from '@angular/material/chips';
 import { inject } from '@vercel/analytics';
 import { BlogComponent } from './pages/blog/blog.component';
 import { FaqComponent } from './pages/faq/faq.component';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { CardBlockComponent } from './pages/blog/card-block/card-block.component';
+import { NgOptimizedImage } from '@angular/common';
 
 inject();
 
 const mapConfig: IConfig = {
-  apikey: '69fe71a6-4d34-41cf-96ee-3d489c6a9aff',
+  apikey: environment.mapConfig.apikey,
   lang: 'en_US',
 };
 @NgModule({
@@ -76,10 +79,9 @@ const mapConfig: IConfig = {
     DeliveryComponent,
     BlogComponent,
     FaqComponent,
+    CardBlockComponent,
   ],
   imports: [
-    // AngularFireModule.initializeApp(),
-    // AngularFirestoreModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -100,6 +102,8 @@ const mapConfig: IConfig = {
     AngularYandexMapsModule,
     AngularYandexMapsModule.forRoot(mapConfig),
     MatChipsModule,
+    MatExpansionModule,
+    NgOptimizedImage,
   ],
   providers: [Meta],
   bootstrap: [AppComponent],

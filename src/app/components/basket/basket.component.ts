@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { BasketService } from '../../services/basket.service';
 import { Item } from '../../interfaces/basket';
-import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-basket',

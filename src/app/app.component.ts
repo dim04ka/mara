@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 import { BasketService } from './services/basket.service';
+import { infinityMenuItems, categories } from './constants';
 
 @Component({
   selector: 'app-root',
@@ -23,26 +24,12 @@ export class AppComponent {
       }
     });
   }
-  ngOnInit(): void {}
   ngOnDestroy(): void {
     this.routerEvents.unsubscribe();
-    // Unsubscribe to avoid memory leak
   }
 
-  data = [
-    'воск',
-    'фитили',
-    'аромамасла',
-    'свечи',
-    'быстрый самовывоз с нашего склада',
-    'бесплатная доставка по тбилиси от 350 лар',
-  ];
   isMenuOpen = false;
 
-  categories = [
-    { name: 'Свечи', url: 'candles' },
-    { name: 'Воски', url: 'wax' },
-    { name: 'Фитили', url: 'candlewick' },
-    { name: 'Другое', url: 'other' },
-  ];
+  protected readonly infinityMenuItems = infinityMenuItems;
+  protected readonly categories = categories;
 }

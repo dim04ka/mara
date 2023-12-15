@@ -1,9 +1,6 @@
 import { Component, Input } from '@angular/core';
-
-interface IBreadcrumbs {
-  title: string;
-  url: string;
-}
+import { CATEGORY_URL } from '../../interfaces/category';
+import { IBreadcrumbs } from '../../interfaces/breadcrumbs.interface';
 
 @Component({
   selector: 'app-breadcrumbs',
@@ -11,7 +8,7 @@ interface IBreadcrumbs {
   styleUrls: ['./breadcrumbs.component.scss'],
 })
 export class BreadcrumbsComponent {
-  @Input() category: string = '';
+  @Input() category: CATEGORY_URL;
   @Input() idProduct: string = '';
   @Input() titleProduct: string = '';
 

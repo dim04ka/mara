@@ -8,6 +8,7 @@ import { Item } from '../../interfaces/basket';
 import { ProductService } from '../../services/product.service';
 import { Meta } from '@angular/platform-browser';
 import { FirestoreService } from '../../services/firestore.service';
+import { CATEGORY_URL } from '../../interfaces/category';
 
 @Component({
   selector: 'app-description',
@@ -51,7 +52,7 @@ export class DescriptionComponent {
   }
 
   id = '';
-  category = '';
+  category: CATEGORY_URL;
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {

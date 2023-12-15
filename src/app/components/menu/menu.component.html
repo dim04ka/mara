@@ -24,7 +24,7 @@
     <div class="category">
       <ul>
         <li class='line' *ngFor="let category of categories">
-          <a [routerLink]="getLink(category.id)" [routerLinkActive]="['active']">{{category.name}}</a>
+          <a [routerLink]="getLink(category.url)" [routerLinkActive]="['active']">{{category.name}}</a>
         </li>
       </ul>
     </div>
