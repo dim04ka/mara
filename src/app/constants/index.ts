@@ -11,6 +11,13 @@ import { CATEGORY, CATEGORY_URL, ICategory } from '../interfaces/category';
 //   2: [CATEGORY.CANDLEWICK],
 //   3: [CATEGORY.OTHER],
 // };
+
+export const categoriesName: Record<CATEGORY_URL, string> = {
+  candles: 'Свечи',
+  wax: 'Воски',
+  candlewick: 'Фитили',
+  other: 'Другое',
+};
 export const categoryGroupById = {
   0: 'candles',
   1: 'wax',

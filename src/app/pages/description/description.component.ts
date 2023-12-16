@@ -4,9 +4,10 @@ import { BasketService } from '../../services/basket.service';
 import { Product } from '../../interfaces/table';
 import { Item } from '../../interfaces/basket';
 import { ProductService } from '../../services/product.service';
-import { Meta } from '@angular/platform-browser';
+import { Meta, Title } from '@angular/platform-browser';
 import { FirestoreService } from '../../services/firestore.service';
 import { CATEGORY_URL } from '../../interfaces/category';
+import { categoriesName } from '../../constants';
 
 @Component({
   selector: 'app-description',
@@ -19,13 +20,15 @@ export class DescriptionComponent {
     private basketService: BasketService,
     private productService: ProductService,
     private metaService: Meta,
-    private firestoreService: FirestoreService
+    private firestoreService: FirestoreService,
+    private titleService: Title,
   ) {
     this.productService.products$.subscribe((data: Product[]) => {
       this.product = data.filter(el => el.id === this.id)[0];
     });
   }
   addTag() {
+    this.titleService.setTitle(this.product.title + ' | Mara candles')
     this.metaService.addTags([
       {
         name: 'description',
@@ -38,10 +41,13 @@ export class DescriptionComponent {
           'Свечи || Соевый воск || Ручная работа || Тбилиси || Подарок. Свечи ручной работы Тбилиси Грузия',
       },
       {
-        name: 'og:image',
+        property: 'og:image',
         content: this.product.images[0].url,
       },
+      { name: 'keywords', content: this.product.title },
       { name: 'robots', content: 'index,follow' },
+      { property: 'og:locale', content: 'ru_RU' },
+      { property: 'og:site_name', content: 'Свечи || Соевый воск || Ручная работа || Тбилиси || Подарок. Свечи ручной работы Тбилиси Грузия' },
       { property: 'og:title', content: this.product.title },
     ]);
   }

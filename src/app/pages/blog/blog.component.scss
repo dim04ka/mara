@@ -3,6 +3,10 @@
   grid-template-columns: 1fr 1fr 1fr;
   gap: 20px;
 
+  @media (max-width: 1180px) {
+    grid-template-columns: 1fr
+  }
+
   &__post{
     text-decoration: none;
     color: black;
