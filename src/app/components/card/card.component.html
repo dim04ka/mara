@@ -17,5 +17,7 @@
   <!--  <mat-form-field>-->
   <!--    <mat-label></mat-label>-->
   <!--  </mat-form-field>-->
-  <button mat-raised-button color="primary" (click)='addToBasket.emit({id: product.id, count: 1 })'>Добавить в корзину</button>
+  <button [disabled]='product.hide' mat-raised-button color="primary" (click)='addToBasket.emit({id: product.id, count: 1 })'>
+    {{product.hide ? 'Нет в наличии' : 'Добавить в корзину'}}
+  </button>
 </div>

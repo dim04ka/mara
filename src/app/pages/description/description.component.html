@@ -17,9 +17,10 @@
           <div>
             <div>{{product?.small_description}}</div>
           </div>
+
           <div class='price'>{{product?.price | currency: "GEL":"symbol-narrow"}}</div>
-          <button mat-raised-button color='primary' class='button' (click)='addToBasket({ id: product!.id , count: 1 })'>Добавить в
-            корзину
+          <button [disabled]='product.hide' mat-raised-button color='primary' class='button' (click)='addToBasket({ id: product!.id , count: 1 })'>
+            {{product.hide ? 'Нет в наличии' : 'Добавить в корзину'}}
           </button>
           <div>
             <strong>Описание:</strong>

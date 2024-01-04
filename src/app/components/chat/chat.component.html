@@ -1,0 +1,12 @@
+<section class='chat'>
+  <button type='button' (click)='toggleOpen()'>{{!isChatOpen && 'открыть'}}</button>
+  <div *ngIf='isChatOpen' class='chat-wrapper'>
+    <div>Text .....</div>
+    <form (ngSubmit)='handleSend()' >
+      <input type='text' [(ngModel)]='value' name='text' />
+      <button type='submit'>send</button>
+    </form>
+  </div>
+</section>
+
+

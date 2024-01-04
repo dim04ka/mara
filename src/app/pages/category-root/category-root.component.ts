@@ -17,13 +17,14 @@ import { Meta, Title } from '@angular/platform-browser';
 export class CategoryRootComponent {
   category: CATEGORY_URL | null = null;
   data: Product[] = [];
+
   constructor(
     private route: ActivatedRoute,
     private basketService: BasketService,
     private firestoreService: FirestoreService,
     private productService: ProductService,
     private metaService: Meta,
-    private titleService: Title,
+    private titleService: Title
   ) {
     this.firestoreService.loadValues();
   }
@@ -36,7 +37,7 @@ export class CategoryRootComponent {
         this.data = products.filter(
           product => product.category === this.categoryId(this.category)
         );
-        this.addTag()
+        this.addTag();
       });
     });
   }
@@ -50,23 +51,36 @@ export class CategoryRootComponent {
   }
 
   addTag() {
-    this.titleService.setTitle(categoriesName[this.category]+ ' | Mara candles')
+    this.titleService.setTitle(
+      categoriesName[this.category] + ' | Mara candles'
+    );
     this.metaService.addTags([
       {
         name: 'description',
         content:
-         'Свечи || Соевый воск || Ручная работа || Тбилиси || Подарок. Свечи ручной работы Тбилиси Грузия',
+          'Свечи || Соевый воск || Ручная работа || Тбилиси || Подарок. Свечи ручной работы Тбилиси Грузия',
       },
       {
         name: 'og:description',
         content:
           'Свечи || Соевый воск || Ручная работа || Тбилиси || Подарок. Свечи ручной работы Тбилиси Грузия',
       },
-      { name: 'keywords', content: 'Свечи || Соевый воск || Ручная работа || Тбилиси || Подарок. Свечи ручной работы Тбилиси Грузия' },
+      {
+        name: 'keywords',
+        content:
+          'Свечи || Соевый воск || Ручная работа || Тбилиси || Подарок. Свечи ручной работы Тбилиси Грузия',
+      },
       { name: 'robots', content: 'index,follow' },
       { property: 'og:locale', content: 'ru_RU' },
-      { property: 'og:site_name', content: 'Свечи || Соевый воск || Ручная работа || Тбилиси || Подарок. Свечи ручной работы Тбилиси Грузия' },
-      { property: 'og:title', content: categoriesName[this.category]+ ' | Mara candles' },
+      {
+        property: 'og:site_name',
+        content:
+          'Свечи || Соевый воск || Ручная работа || Тбилиси || Подарок. Свечи ручной работы Тбилиси Грузия',
+      },
+      {
+        property: 'og:title',
+        content: categoriesName[this.category] + ' | Mara candles',
+      },
     ]);
   }
 }

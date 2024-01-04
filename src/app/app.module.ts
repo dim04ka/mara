@@ -23,7 +23,7 @@ import { environment } from '../environments/environment';
 
 import { TableComponent } from './components/table/table.component';
 import { MatTableModule } from '@angular/material/table';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
@@ -48,6 +48,7 @@ import { FaqComponent } from './pages/faq/faq.component';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { CardBlockComponent } from './pages/blog/card-block/card-block.component';
 import { NgOptimizedImage } from '@angular/common';
+import { ChatComponent } from './components/chat/chat.component';
 
 inject();
 
@@ -80,6 +81,7 @@ const mapConfig: IConfig = {
     BlogComponent,
     FaqComponent,
     CardBlockComponent,
+    ChatComponent,
   ],
   imports: [
     BrowserModule,
@@ -104,6 +106,7 @@ const mapConfig: IConfig = {
     MatChipsModule,
     MatExpansionModule,
     NgOptimizedImage,
+    FormsModule,
   ],
   providers: [Meta],
   bootstrap: [AppComponent],

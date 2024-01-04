@@ -38,20 +38,21 @@
         <input type='checkbox' formControlName="hide">
         <mat-form-field class="example-chip-list">
           <mat-label>Favorite Fruits</mat-label>
+
           <mat-chip-grid #chipGrid aria-label="Enter fruits">
             <mat-chip-row *ngFor="let image of images"
-              (removed)="remove(image)"
-              [editable]="true"
-              (edited)="edit(image, $event)"
-              [aria-description]="'press enter to edit ' + image.url">
+                          (removed)="remove(image)"
+                          [editable]="true"
+                          (edited)="edit(image, $event)"
+                          [aria-description]="'press enter to edit ' + image.url">
               <mat-chip>
                 <img matChipAvatar [src]="image.url"/>
               </mat-chip>
 
-            <button matChipRemove [attr.aria-label]="'remove ' + image.url">
-              <mat-icon>cancel</mat-icon>
-            </button>
-          </mat-chip-row>
+              <button matChipRemove [attr.aria-label]="'remove ' + image.url">
+                <mat-icon>cancel</mat-icon>
+              </button>
+            </mat-chip-row>
 
             <input placeholder="New fruit..."
                    [matChipInputFor]="chipGrid"
