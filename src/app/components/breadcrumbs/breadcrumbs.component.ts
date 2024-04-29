@@ -23,6 +23,8 @@ export class BreadcrumbsComponent {
       wax: 'Воски',
       candlewick: 'Фитили',
       other: 'Другое',
+      package: 'Упаковка',
+      container: 'Емкости для свечей',
     };
     this.breadcrumbs = [
       {

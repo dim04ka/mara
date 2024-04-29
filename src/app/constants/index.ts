@@ -17,18 +17,23 @@ export const categoriesName: Record<CATEGORY_URL, string> = {
   wax: 'Воски',
   candlewick: 'Фитили',
   other: 'Другое',
+  package: 'Упаковка',
+  container: 'Емкости для свечей',
 };
 export const categoryGroupById = {
   0: 'candles',
   1: 'wax',
   2: 'candlewick',
   3: 'other',
+  4: 'package',
 };
 export const categoryGroup: Record<CATEGORY_URL, string> = {
   candles: '0',
   wax: '1',
   candlewick: '2',
   other: '3',
+  package: '4',
+  container: '5',
 };
 export const PRODUCTS_URL = 'https://back-ashy-six.vercel.app';
 
@@ -56,6 +61,16 @@ export const categories: ICategory[] = [
     name: 'Фитили',
     url: 'candlewick',
     img: '/assets/images/category/category-wick.png',
+  },
+  {
+    name: 'Упаковка',
+    url: 'package',
+    img: '/assets/images/category/category-package.png',
+  },
+  {
+    name: 'Емкости для свечей',
+    url: 'container',
+    img: '/assets/images/category/category-containers-for-candles.png',
   },
   {
     name: 'Другое',

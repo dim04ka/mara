@@ -34,12 +34,15 @@
           <mat-label>small_description</mat-label>
           <input matInput placeholder='Placeholder' formControlName='small_description'>
         </mat-form-field>
+        <div style='display:flex;'>
+          <label for="hide">Out of stock</label>
+          <input type='checkbox' id='hide' formControlName="hide" value='out of stock'>
+        </div>
 
-        <input type='checkbox' formControlName="hide">
         <mat-form-field class="example-chip-list">
-          <mat-label>Favorite Fruits</mat-label>
+          <mat-label>Favorite images</mat-label>
 
-          <mat-chip-grid #chipGrid aria-label="Enter fruits">
+          <mat-chip-grid #chipGrid aria-label="Enter image">
             <mat-chip-row *ngFor="let image of images"
                           (removed)="remove(image)"
                           [editable]="true"
@@ -54,7 +57,7 @@
               </button>
             </mat-chip-row>
 
-            <input placeholder="New fruit..."
+            <input placeholder="New pictures..."
                    [matChipInputFor]="chipGrid"
                    [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
                    [matChipInputAddOnBlur]="addOnBlur"
