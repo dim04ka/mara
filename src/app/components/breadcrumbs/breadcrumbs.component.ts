@@ -25,6 +25,7 @@ export class BreadcrumbsComponent {
       other: 'Другое',
       package: 'Упаковка',
       container: 'Емкости для свечей',
+      aromas: 'Ароматы',
     };
     this.breadcrumbs = [
       {

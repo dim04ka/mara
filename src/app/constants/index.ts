@@ -1,4 +1,4 @@
-import { CATEGORY, CATEGORY_URL, ICategory } from '../interfaces/category';
+import { CATEGORY_URL, ICategory } from '../interfaces/category';
 
 // export const categoryGroupByName: Record<CATEGORY, string> = {
 //   [CATEGORY.CANDES]: '0',
@@ -19,6 +19,7 @@ export const categoriesName: Record<CATEGORY_URL, string> = {
   other: 'Другое',
   package: 'Упаковка',
   container: 'Емкости для свечей',
+  aromas: 'Ароматы',
 };
 export const categoryGroupById = {
   0: 'candles',
@@ -26,6 +27,8 @@ export const categoryGroupById = {
   2: 'candlewick',
   3: 'other',
   4: 'package',
+  5: 'container',
+  6: 'aromas',
 };
 export const categoryGroup: Record<CATEGORY_URL, string> = {
   candles: '0',
@@ -34,6 +37,7 @@ export const categoryGroup: Record<CATEGORY_URL, string> = {
   other: '3',
   package: '4',
   container: '5',
+  aromas: '6',
 };
 export const PRODUCTS_URL = 'https://back-ashy-six.vercel.app';
 
@@ -71,6 +75,11 @@ export const categories: ICategory[] = [
     name: 'Емкости для свечей',
     url: 'container',
     img: '/assets/images/category/category-containers-for-candles.png',
+  },
+  {
+    name: 'Ароматы',
+    url: 'aromas',
+    img: '/assets/images/category/category-aromas.png',
   },
   {
     name: 'Другое',
