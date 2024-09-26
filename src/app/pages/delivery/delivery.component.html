@@ -11,7 +11,26 @@
           При заказе на сумму от 350 лар, доставка ЯНДЕКС ДОСТАВКОЙ оплачиваем мы. </p>
         <p>При необходимости доставки товара в другой город, условия и удобные для вас варианты, обсуждаются индивидуально. </p>
 
-        <h2>Оплата</h2>
+        <h2 id='payment'>Оплата</h2>
+        <p>Credo Bank / კრედო ბანკი</p>
+        <p class='payment-address'><b>GE81CD0360000044143027</b>
+          <span class="copy"
+                matTooltip="{{tooltipMessage}}"
+                (click)="copyCode('GE81CD0360000044143027', tooltip)"
+                #tooltip="matTooltip">
+            <mat-icon>file_copy</mat-icon>
+          </span>
+        </p>
+        <p class='name'>Iryna Sukhotskaya
+          <span class="copy"
+                matTooltip="{{tooltipMessage}}"
+                (click)="copyCode('Iryna Sukhotskaya', tooltip)"
+                #tooltip="matTooltip">
+            <mat-icon>file_copy</mat-icon>
+          </span>
+        </p>
+        <p>ЮМоney</p>
+        <p><b>5599002028463232</b></p>
         <p>Вы можете оплатить товар карточкой любого банка путем перечисления выставленной суммы на счет.</p>
         <p>Также вы можете оплатить заказ наличными денежными средствами при получении товара.</p>
         <p>Оплата онлайн временно недоступна. Мы работаем над исправлением данной ошибки. </p>

@@ -49,6 +49,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { CardBlockComponent } from './pages/blog/card-block/card-block.component';
 import { NgOptimizedImage } from '@angular/common';
 import { ChatComponent } from './components/chat/chat.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 inject();
 
@@ -107,6 +108,7 @@ const mapConfig: IConfig = {
     MatExpansionModule,
     NgOptimizedImage,
     FormsModule,
+    MatTooltipModule,
   ],
   providers: [Meta],
   bootstrap: [AppComponent],
